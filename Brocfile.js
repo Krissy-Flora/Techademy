@@ -1,4 +1,10 @@
-/* global require, module */
+/*
+	Description:
+	The Number JavaScript object is a wrapper object allowing you to work with numerical values. A Number object is created using the Number() constructor.
+
+	Syntax:
+	new Number(value);
+*/
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
