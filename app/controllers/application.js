@@ -14,6 +14,7 @@ var PhotoCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 export default Ember.Controller.extend({
 	photos: PhotoCollection.create(),
 	searchField: '',
+	tagsearchField: '',
 	filteredPhotos: function(){
 		var filter = this.get('searchFilter');
 		var rx = new RegExp(filter, 'gi');
@@ -40,20 +41,22 @@ export default Ember.Controller.extend({
 	}.property('photos','searchField'),
 	actions: {
 		search: function () {
-				this.get('filteredPhotos');
+			this.get('photos').content.clear();
+			this.store.unloadAll('photo');
+			this.send('getPhotos',this.get('tagSearchField'));
 		},
-		getPhotos: function(){
-			var apiKey = '46afdefe8cde4ac04e84904e6e10de9e';
+		getPhotos: function(tag){
+			var apiKey = '4435e3a217bc7afc94dfcba607b70eb1';
 			var host = 'https://api.flickr.com/services/rest/';
 			var method = "flickr.tags.getClusterPhotos";
-			var tag = "hi";
 			var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tag="+tag+"&format=json&nojsoncallback=1";
 			var photos = this.get('photos');
+			var t = this;
 			Ember.$.getJSON(requestURL, function(data){
 				//callback for successfully completed requests
 				console.log(data);
 				data.photos.photo.map(function(photo) {
-					var newPhotoItem = Photo.create({
+					var newPhotoItem = t.store.createRecord('photo',{
 						title: photo.title,
 						username: photo.username,
 						//flickr extra data
