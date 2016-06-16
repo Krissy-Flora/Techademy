@@ -47,21 +47,46 @@ export default Ember.Controller.extend({
 						var tags = photo.tags.tag.map(function(tagitem){
 							return tagitem._content;
 						});
-						var newPhotoItem = t.store.createRecord('photo',{
-							title: photo.title._content,
-							dates: photo.dates,
-							owner: photo.owner,
-							description: photo.description._content,
-							link: photo.urls.url[0]._content,
-							views: photo.views,
-							tags: tags,
-							//flickr url data
-							id: photo.id,
-							farm: photo.farm,
-							secret: photo.secret,
-							server: photo.server,
-						});
-						photos.pushObject(newPhotoItem);
+					
+						if (photo.comments._content>0 ){
+							var commentRequestURL = host + "?method="+"flickr.photos.comments.getList" + "&api_key="+apiKey+ "&photo_id="+photoitem.id+"&format=json&nojsoncallback=1";
+							Ember.$.getJSON(commentRequestURL, function(comments){
+								var newPhotoItem = t.store.createRecord('photo',{
+									title: photo.title._content,
+									dates: photo.dates,
+									owner: photo.owner,
+									description: photo.description._content,
+									link: photo.urls.url[0]._content,
+									views: photo.views,
+									tags: tags,
+									//flickr url data
+									id: photo.id,
+									farm: photo.farm,
+									secret: photo.secret,
+									server: photo.server,
+									comments: comments.comments
+								});
+								photos.pushObject(newPhotoItem);
+							});
+						}
+						else{
+							var newPhotoItem = t.store.createRecord('photo',{
+								title: photo.title._content,
+								dates: photo.dates,
+								owner: photo.owner,
+								description: photo.description._content,
+								link: photo.urls.url[0]._content,
+								views: photo.views,
+								tags: tags,
+								//flickr url data
+								id: photo.id,
+								farm: photo.farm,
+								secret: photo.secret,
+								server: photo.server,
+							});
+							photos.pushObject(newPhotoItem);
+						}
+						
 						
 					});
 					

@@ -32,6 +32,11 @@
 				<div class="media-body">
 					<h4 class="media-heading">{{photo.title}} ({{photo.views}} Views)</h4>
 					{{{photo.description}}}
+					comments:<br>{{#each comment in photo.comments}}
+						{{log comment}}
+						{{comment.[0]._content}}
+						
+					{{/each}}
 				</div>
 			</div>
 			<br>
@@ -39,7 +44,7 @@
 				<div class="col-md-1 col-xs-1 col-sm-1">Tags:</div>
 				<div class="col-md-11 col-xs-11 col-sm-11">
 					{{#each tag in photo.tags}}
-						<button class="btn btn-info btn-xs post-tag-button" {{action "clicktag" tag}}>#{{tag}}</button> 
+						<button class="btn btn-info btn-s post-tag-button btn-sample" {{action "clicktag" tag}}>#{{tag}}</button> 
 					{{/each}}
 				</div>
 			</div>
@@ -50,15 +55,16 @@
 	{{#liquid-if loading use="toDown"}}
 		<img src="../page-loading.gif" class="img-responsive center-block"/>
 	{{else}}
-		<div class="jumbotron">
-			<h1>[app-name]</h1>
-			<p>Created by [yourname]</p>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 mybackground">
+			<h1>*Klickr*</h1>
+			<p>Created by Karissa_Flora</p>
 			<p>Click one of the popular flickr tags below or search one above:</p>
 			{{#each tag in tagList}}
-				<button class="btn btn-info btn-small tag-button" {{action "clicktag" tag}}>#{{tag}}</button>
+				<button class="btn btn-small tag-button btn-sample" {{action "clicktag" tag}}>#{{tag}}</button>
 			{{/each}}
+			</div>
 		</div>
 	{{/liquid-if}}
 {{/liquid-if}}
 </div>
-

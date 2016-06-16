@@ -5,7 +5,10 @@
 	max-width: 240px;
 }
 
-body {padding-top: 70px;}
+body {
+	padding-top: 70px;
+	background-image: url('../424626990_l.jpg');
+}
 .search-field {
 	padding-top: 8px;
 	padding-right: 10px;
@@ -19,4 +22,58 @@ body {padding-top: 70px;}
 .post-tag-button {
 	padding:2px;
 	margin-top: 1px;
+}
+
+.btn-sample { 
+  color: #F2B009; 
+  background-color: #0CAEC4; 
+  border-color: #C1DAE6; 
+} 
+ 
+.btn-sample:hover, 
+.btn-sample:focus, 
+.btn-sample:active, 
+.btn-sample.active, 
+.open .dropdown-toggle.btn-sample { 
+  color: #F2B009; 
+  background-color: #0A8CA3; 
+  border-color: #C1DAE6; 
+} 
+ 
+.btn-sample:active, 
+.btn-sample.active, 
+.open .dropdown-toggle.btn-sample { 
+  background-image: none; 
+} 
+ 
+.btn-sample.disabled, 
+.btn-sample[disabled], 
+fieldset[disabled] .btn-sample, 
+.btn-sample.disabled:hover, 
+.btn-sample[disabled]:hover, 
+fieldset[disabled] .btn-sample:hover, 
+.btn-sample.disabled:focus, 
+.btn-sample[disabled]:focus, 
+fieldset[disabled] .btn-sample:focus, 
+.btn-sample.disabled:active, 
+.btn-sample[disabled]:active, 
+fieldset[disabled] .btn-sample:active, 
+.btn-sample.disabled.active, 
+.btn-sample[disabled].active, 
+fieldset[disabled] .btn-sample.active { 
+  background-color: #0CAEC4; 
+  border-color: #C1DAE6; 
+} 
+ 
+.btn-sample .badge { 
+  color: #0CAEC4; 
+  background-color: #F2B009; 
+}
+
+.mybackground h1{
+	color: #00C5CD; 
+}
+
+.mybackground {
+	background-color: #DDF3F3; 
 }

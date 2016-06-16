@@ -13,6 +13,7 @@ export default DS.Model.extend({
 	farm: DS.attr('number'),
 	secret: DS.attr('string'),
 	server: DS.attr('string'),
+	comments: DS.attr('object'),
 	url: function(){
 		return "https://farm"+this.get('farm')+
 		".staticflickr.com/"+this.get('server')+
@@ -27,5 +28,6 @@ export default DS.Model.extend({
 		var months =  ["January","Feburary","March","April","May","June","July",
 			"August","September","October","November","December"];
 		return days[taken.getDay()] + " " + months[taken.getMonth()] +" "+taken.getDate()+", "+taken.getFullYear();
-	}.property('dates.taken')
+	}.property('dates.taken'),
+
 });
