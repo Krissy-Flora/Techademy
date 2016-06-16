@@ -77,3 +77,8 @@ fieldset[disabled] .btn-sample.active {
 .mybackground {
 	background-color: #DDF3F3; 
 }
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+}
