@@ -49,7 +49,7 @@ contentSecurityPolicy: {
   }
 
   if (environment === 'production') {
-
+    ENV.baseURL = '/ember/';
   }
 
   return ENV;
